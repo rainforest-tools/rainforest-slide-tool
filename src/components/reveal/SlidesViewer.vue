@@ -15,7 +15,7 @@ import { RootMutation } from '@/store';
 import Reveal from 'reveal.js/js';
 import RevealMarkdown from 'reveal.js/plugin/markdown/markdown';
 import marked from 'marked';
-import md from 'raw-loader!@/assets/research/README.md';
+
 export default {
   name: "slides viewer",
   props: {
