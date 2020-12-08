@@ -29,16 +29,12 @@ export default {
   created() {
     this.fetchMarkdown(this.src);
   },
-  watch: {
-    markdown(val) {
-      console.log(val);
-      if (val)
-        Reveal.initialize({
-          plugins: [
-            RevealMarkdown,
-          ]
-        }).then(() => console.log("Reveal Initialized"));
-    }
+  mounted() {
+    Reveal.initialize({
+      plugins: [
+        RevealMarkdown,
+      ]
+    }).then(() => console.log("Reveal Initialized"));
   },
   methods: {
     ...mapActions(['fetchMarkdown'])

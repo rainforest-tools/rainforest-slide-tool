@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <SlidesViewer src="https://cors-anywhere.herokuapp.com/https://raw.githubusercontent.com/r08521610/rainforest-slides/main/README.md?token=ANIZMAQZRZNTRC5E7K2AI5K73BB5G" />
+    <SlidesViewer src="https://cors-anywhere.herokuapp.com/https://raw.githubusercontent.com/r08521610/rainforest-slides/develop/README.md?token=ANIZMAV7WC6EDTGDYQMT5ES73COII" />
   </div>
 </template>
 
