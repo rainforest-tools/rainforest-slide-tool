@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/rainforest-slides/precache-manifest.43f8c95805d1536135f5be1716dda5d4.js"
+  "/rainforest-slides/precache-manifest.5a562472b7949f2df1a6e140ba3d0917.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "rainforest-slides"});
