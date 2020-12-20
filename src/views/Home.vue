@@ -1,7 +1,6 @@
-<template>
-  <div class="home">
-    <SlidesViewer :src="exampleSlideUrl" />
-  </div>
+<template lang="pug">
+.home
+  SlidesViewer(:src="exampleSlideUrl")
 </template>
 
 <script lang="ts">

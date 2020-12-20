@@ -1,44 +1,67 @@
 <template lang="pug">
-.reveal
-  .slides
-    section Single Horizontal Slide
-    section
-      section Vertical Slide 1
-      section {{ markdown }}
-    section(v-html="markdown")
+Suspense
+  template(#default)
+    Slide(:src="$props.src")
+  template(#fallback)
+    .loading Loading...
 </template>
 <script>
+import { defineAsyncComponent, defineComponent } from "vue";
 // Vuex
-import { mapState, mapActions } from 'vuex';
-import { RootMutation } from '@/store';
+import { mapState, mapActions } from "vuex";
 // Utils
-import Reveal from 'reveal.js/js';
-import RevealMarkdown from 'reveal.js/plugin/markdown/markdown';
-import marked from 'marked';
+// TODO: define .d.ts for the following modules
+import Reveal from "reveal.js/js";
+import RevealMarkdown from "reveal.js/plugin/markdown/markdown";
+import marked from "marked";
 
-export default {
-  name: "slides viewer",
+const Slide = defineComponent({
   props: {
-    src: String,
+    src: String
   },
   computed: {
     ...mapState({
-      markdown: state => marked(state.markdown)
-    })
+      markdown: (state) => marked(state.markdown),
+    }),
   },
   created() {
     this.fetchMarkdown(this.src);
   },
   mounted() {
     Reveal.initialize({
-      plugins: [
-        RevealMarkdown,
-      ]
+      plugins: [RevealMarkdown],
     }).then(() => console.log("Reveal Initialized"));
   },
   methods: {
-    ...mapActions(['fetchMarkdown'])
+    ...mapActions(["fetchMarkdown"]),
+  },
+  render() {
+    return (
+      <div class="reveal">
+        <div class="slides">
+          <section>Single Horizontal Slide</section>
+          <section v-html={this.markdown} />
+        </div>
+      </div>
+    );
   }
-};
+});
+
+const AsyncSlide = defineAsyncComponent(() => new Promise((resolve, _) => Slide));
+
+export default defineComponent({
+  props: {
+    src: String,
+  },
+  components: {
+    Slide
+  },
+});
 </script>
 <style lang="scss" src="reveal.js/css/reveal.scss"></style>
+<style lang="scss" scoped>
+.viewer {
+  width: 100%;
+  height: 100%;
+}
+</style>
