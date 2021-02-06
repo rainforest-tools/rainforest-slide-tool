@@ -1,6 +1,12 @@
-import { createApp } from 'vue'
+import { createSSRApp } from 'vue'
+import { createRouter } from './router'
 // TypeScript error? Run VSCode command
 // TypeScript: Select TypeScript version - > Use Workspace Version
 import App from './App.vue'
 
-createApp(App).mount('#app')
+export const createApp = () => {
+  const app = createSSRApp(App)
+  const router = createRouter()
+  app.use(router)
+  return { app, router }
+}
