@@ -1,7 +1,12 @@
+const { join } = require('path')
+const BASE_DIR = join(__dirname, 'src')
+const VUE_FILE = join('**', '*.vue')
+
 module.exports = {
-  purge: [],
-  // see [optimizing for production](https://tailwindcss.com/docs/optimizing-for-production)
-  // purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+  purge: {
+    enabled: process.env.NODE_ENV === 'production',
+    content: [join(BASE_DIR, VUE_FILE), join(__dirname, '*.html')],
+  },
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
