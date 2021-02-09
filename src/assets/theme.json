@@ -1,0 +1,16 @@
+{
+  "name": "default",
+  "description": "default theme",
+  "dark": {
+    "sizeTheme": {
+      "buttonSize": {
+        "lg": "h-10"
+      }
+    },
+    "colorTheme": {
+      "textColor": {
+        "text": "text-gray-100"
+      }
+    }
+  }
+}

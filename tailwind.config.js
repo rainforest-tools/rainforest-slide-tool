@@ -7,7 +7,7 @@ module.exports = {
     enabled: process.env.NODE_ENV === 'production',
     content: [join(BASE_DIR, VUE_FILE), join(__dirname, '*.html')],
   },
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'class', // or 'media' or 'class'
   theme: {
     extend: {},
   },
